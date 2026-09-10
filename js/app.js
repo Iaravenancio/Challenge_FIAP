@@ -123,55 +123,52 @@ window.clearCart = clearCart;
 console.log('app.js carregado');
 
 /* ===== Busca de produtos ===== */
+
 document.addEventListener('DOMContentLoaded', () => {
 
-  const searchForm = document.getElementById('searchForm');
   const searchInput = document.getElementById('searchInput');
+  const searchForm = document.getElementById('searchForm');
 
-  if (!searchForm || !searchInput) return;
+  if (!searchInput) {
+    console.warn('Campo de busca não encontrado.');
+    return;
+  }
 
-  const produtos = document.querySelectorAll('.ofertas article');
-
-  function realizarBusca() {
+  function buscarProdutos() {
 
     const termo = searchInput.value
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
       .trim()
       .toLowerCase();
 
-    let encontrados = 0;
+    const produtos = document.querySelectorAll('.ofertas article');
 
-    produtos.forEach(card => {
+    produtos.forEach(produto => {
 
-      const nome = card.querySelector('h6')?.textContent
+      const nomeElemento = produto.querySelector('h6');
+
+      if (!nomeElemento) return;
+
+      const nome = nomeElemento.textContent
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
         .trim()
-        .toLowerCase() || '';
+        .toLowerCase();
 
-      if (termo === '' || nome.includes(termo)) {
-        card.classList.remove('d-none');
-        encontrados++;
-      } else {
-        card.classList.add('d-none');
-      }
+      const encontrou = termo === '' || nome.includes(termo);
 
+      produto.style.display = encontrou ? '' : 'none';
     });
-
-    return encontrados;
   }
 
-  // Busca enquanto digita
-  searchInput.addEventListener('input', realizarBusca);
+  // Pesquisa enquanto digita
+  searchInput.addEventListener('input', buscarProdutos);
 
-  // Também funciona ao apertar Enter
-  searchForm.addEventListener('submit', (event) => {
+  // Impede o formulário de recarregar a página
+  searchForm?.addEventListener('submit', (event) => {
     event.preventDefault();
-
-    const encontrados = realizarBusca();
-
-    if (encontrados === 0) {
-      toast(
-        `Nenhum produto encontrado para "<strong>${searchInput.value}</strong>"`
-      );
-    }
+    buscarProdutos();
   });
 
 });
