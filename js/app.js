@@ -130,22 +130,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (!searchForm || !searchInput) return;
 
-  searchForm.addEventListener('submit', (event) => {
-    event.preventDefault();
+  const produtos = document.querySelectorAll('.ofertas article');
 
-    const termo = searchInput.value.trim().toLowerCase();
+  function realizarBusca() {
 
-    // Se a busca estiver vazia, mostra todos os produtos
-    if (!termo) {
-      document.querySelectorAll('.ofertas article').forEach(card => {
-        card.classList.remove('d-none');
-      });
+    const termo = searchInput.value
+      .trim()
+      .toLowerCase();
 
-      return;
-    }
-
-    const produtos = document.querySelectorAll('.ofertas article');
-    let encontrado = false;
+    let encontrados = 0;
 
     produtos.forEach(card => {
 
@@ -153,17 +146,31 @@ document.addEventListener('DOMContentLoaded', () => {
         .trim()
         .toLowerCase() || '';
 
-      const corresponde = nome.includes(termo);
-
-      card.classList.toggle('d-none', !corresponde);
-
-      if (corresponde) {
-        encontrado = true;
+      if (termo === '' || nome.includes(termo)) {
+        card.classList.remove('d-none');
+        encontrados++;
+      } else {
+        card.classList.add('d-none');
       }
+
     });
 
-    if (!encontrado) {
-      toast(`Nenhum produto encontrado para "<strong>${searchInput.value}</strong>"`);
+    return encontrados;
+  }
+
+  // Busca enquanto digita
+  searchInput.addEventListener('input', realizarBusca);
+
+  // Também funciona ao apertar Enter
+  searchForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const encontrados = realizarBusca();
+
+    if (encontrados === 0) {
+      toast(
+        `Nenhum produto encontrado para "<strong>${searchInput.value}</strong>"`
+      );
     }
   });
 
