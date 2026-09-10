@@ -122,6 +122,53 @@ window.clearCart = clearCart;
 // sanity check
 console.log('app.js carregado');
 
+/* ===== Busca de produtos ===== */
+document.addEventListener('DOMContentLoaded', () => {
+
+  const searchForm = document.getElementById('searchForm');
+  const searchInput = document.getElementById('searchInput');
+
+  if (!searchForm || !searchInput) return;
+
+  searchForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const termo = searchInput.value.trim().toLowerCase();
+
+    // Se a busca estiver vazia, mostra todos os produtos
+    if (!termo) {
+      document.querySelectorAll('.ofertas article').forEach(card => {
+        card.classList.remove('d-none');
+      });
+
+      return;
+    }
+
+    const produtos = document.querySelectorAll('.ofertas article');
+    let encontrado = false;
+
+    produtos.forEach(card => {
+
+      const nome = card.querySelector('h6')?.textContent
+        .trim()
+        .toLowerCase() || '';
+
+      const corresponde = nome.includes(termo);
+
+      card.classList.toggle('d-none', !corresponde);
+
+      if (corresponde) {
+        encontrado = true;
+      }
+    });
+
+    if (!encontrado) {
+      toast(`Nenhum produto encontrado para "<strong>${searchInput.value}</strong>"`);
+    }
+  });
+
+});
+
 /* ===== Página de Carrinho ===== */
 function renderCartPage() {
   const table = document.querySelector('#cart-table tbody');
