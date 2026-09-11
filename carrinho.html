@@ -55,8 +55,22 @@
 
   <div class="row g-4">
     <div class="col-12">
-      <div class="alert alert-warning" role="alert" data-cart-empty hidden>
-        Seu carrinho está vazio. <a class="alert-link" href="index.html">Ver produtos</a>
+      <div class="text-center py-5" data-cart-empty hidden>
+        <div class="mb-3">
+          <i class="bi bi-cart-x" style="font-size: 3rem;"></i>
+        </div>
+
+        <h5 class="fw-bold text-brown">Seu carrinho está vazio</h5>
+
+        <p class="text-muted mb-4">
+          Adicione alguns produtos e eles aparecerão aqui.
+        </p>
+
+        <a href="index.html" class="btn btn-primary">
+          <i class="bi bi-arrow-left me-1"></i>
+          Continuar comprando
+        </a>
+
       </div>
 
       <div class="card card-tray p-0">
@@ -80,13 +94,16 @@
             <a href="index.html" class="btn btn-light"><i class="bi bi-arrow-left"></i> Continuar comprando</a>
             <button class="btn btn-outline-danger" data-clear><i class="bi bi-trash3"></i> Limpar carrinho</button>
           </div>
-          <div class="fs-5">Total: <strong data-cart-total>R$ 0,00</strong></div>
+          <div class="fs-5">
+             Total do pedido: 
+             <strong class="text-brown" data-cart-total>R$ 0,00</strong>
+          </div>
         </div>
       </div>
 
       <div class="text-end mt-3">
-        <button class="btn btn-primary btn-lg" disabled title="Em breve">
-          Finalizar compra <i class="bi bi-lock ms-1"></i>
+        <button class="btn btn-primary btn-lg" type="button" data-checkout>
+          Finalizar compra <i class="bi bi-check2-circle ms-1"></i>
         </button>
       </div>
     </div>

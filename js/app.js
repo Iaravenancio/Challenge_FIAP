@@ -346,3 +346,30 @@ document.addEventListener('DOMContentLoaded', () => {
     setAuthUI(null);
   }
 });
+
+/* ===== Finalizar compra - demonstração ===== */
+
+document.addEventListener('click', (e) => {
+
+  const checkoutBtn = e.target.closest('[data-checkout]');
+
+  if (!checkoutBtn) return;
+
+  if (cart.length === 0) {
+    toast('Seu carrinho está vazio.');
+    return;
+  }
+
+  const total = fmtBRL(cartTotal());
+
+  const confirmar = confirm(
+    `Confirmar pedido no valor de ${total}?`
+  );
+
+  if (!confirmar) return;
+
+  clearCart();
+  renderCartPage();
+
+  toast('Pedido realizado com sucesso! 🎉');
+});
