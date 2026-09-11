@@ -12,13 +12,16 @@
     --tile:#e8d9cd;
     --tile-weak:#f0e6dc;
     --thumb-h:200px;
-    --foot-minh:320px;
+    --foot-minh:270px;
   
     /* Cardápios (tamanho do ícone do dia) */
     --day-size:128px;
   }
   
   html,body{height:100%}
+  html{scroll-behavior:smooth;
+  scroll-padding-top:120px;
+  }
   body{background:var(--page);color:#1b1b1b}
   
   .fw-black{font-weight:900}
@@ -153,7 +156,7 @@
   
   .swift-footer .foot-card{
     display:flex;flex-direction:column;height:100%;
-    background:var(--chip);color:#fff;border-radius:16px;padding:18px;
+    background:var(--chip);color:#fff;border-radius:16px;padding:16px;
     box-shadow:0 2px 0 rgba(0,0,0,.08);min-height:var(--foot-minh);
   }
   .swift-footer .foot-card > .foot-pill{
