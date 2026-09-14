@@ -96,7 +96,7 @@
       }
 
       // Procura o usuário cadastrado
-      const storedUser = localStorage.getItem('swift_user');
+      const storedUser = localStorage.getItem('swift_account');
       if (!storedUser) {
         alert(
           'Nenhuma conta encontrada. Faça seu cadastro primeiro.'
@@ -144,8 +144,7 @@
         'swift_user',
         JSON.stringify({
           email: user.email,
-          name: userName,
-          password: user.password
+          name: userName
         })
       );
 

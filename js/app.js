@@ -281,7 +281,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const first = document.querySelector('#formPF .campo-primeiro-nome input')?.value.trim() || '';
     const last  = document.querySelector('#formPF .campo-ultimo-nome input')?.value.trim()   || '';
     const name  = (first + ' ' + last).trim() || (email.split('@')[0] || 'Cliente');
-    localStorage.setItem('swift_user', JSON.stringify({email, name, password: p1 }));
+    localStorage.setItem('swift_account', JSON.stringify({email,name, password: p1 }));
+    localStorage.setItem('swift_user', JSON.stringify({ email, name }));
     submitOK('Cadastro (PF) concluído! Redirecionando…');
   }
 
@@ -300,8 +301,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const fantasia = document.querySelector('#formPJ .campo-fantasia input')?.value.trim() || '';
     const razao    = document.querySelector('#formPJ .campo-razao input')?.value.trim()    || '';
     const name     = fantasia || razao || (email.split('@')[0] || 'Cliente');
-  localStorage.setItem('swift_user', JSON.stringify({email, name, password: p1}));
-
+    localStorage.setItem('swift_account', JSON.stringify({ email, name, password: p1}));
+    localStorage.setItem('swift_user', JSON.stringify({email, name}));
     submitOK('Cadastro (PJ) concluído! Redirecionando…');
   }
 
