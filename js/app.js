@@ -362,19 +362,13 @@ document.addEventListener('click', (e) => {
 
   const total = fmtBRL(cartTotal());
 
-  const confirmar = confirm(
-    `Confirmar pedido no valor de ${total}?`
-  );
-
-  if (!confirmar) return;
-
-  // Salva o total para mostrar na próxima página
+  // Salva o total para a página de finalização
   localStorage.setItem('swift_order_total', total);
 
   // Limpa o carrinho
   clearCart();
 
-  // Vai para a página de confirmação
+  // Vai diretamente para a confirmação do pedido
   window.location.href = 'finalizacao.html';
 
 });
