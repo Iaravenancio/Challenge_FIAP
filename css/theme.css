@@ -27,8 +27,13 @@
   .fw-black{font-weight:900}
   .text-brown{color:var(--brown)!important}
   
-  .header{background:var(--page);position:sticky;top:0;z-index:1030;border-bottom:1px solid rgba(0,0,0,.06)}
-  main{background:transparent;padding:0}
+  .header{
+  background:var(--page);
+  position:relative;
+  z-index:1030;
+  border-bottom:1px solid rgba(0,0,0,.08);
+  box-shadow:0 2px 10px rgba(0,0,0,.04);
+  }
   
   /* ===== Estilos para Carrinho de Compras (adicionado/restaurado para index) ===== */
   /* Assumindo classes comuns; ajuste se o seu HTML usar nomes diferentes */
@@ -84,12 +89,34 @@
   /* ===== Chips de navegação (estilos da index original) ===== */
   .nav-chips{gap:.6rem}
   .nav-chip{
-    display:inline-flex;align-items:center;gap:.5rem;
-    padding:.55rem 1rem;border-radius:12px;
-    background:var(--chip);color:#fff;text-decoration:none;font-weight:700;
-    border:1px solid var(--chip);
-  }
-  .nav-chip.active{background:var(--chip-700);border-color:var(--chip-700)}
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  padding:.55rem 1rem;
+  border-radius:12px;
+  background:var(--chip);
+  color:#fff;
+  text-decoration:none;
+  font-weight:700;
+  border:1px solid var(--chip);
+  transition:
+    transform .2s ease,
+    background-color .2s ease,
+    box-shadow .2s ease;
+}
+
+.nav-chip:hover{
+  color:#fff;
+  background:var(--chip-700);
+  border-color:var(--chip-700);
+  transform:translateY(-2px);
+  box-shadow:0 6px 14px rgba(0,0,0,.12);
+}
+
+.nav-chip:active{
+  transform:translateY(0);
+}
+/*.nav-chip.active{background:var(--chip-700);border-color:var(--chip-700)}
   
   /* ===== Botões (base da index, com override para auth abaixo) ===== */
   .btn-primary{
@@ -111,7 +138,21 @@
     text-decoration:none;box-shadow:0 8px 20px rgba(212,79,54,.25);
   }
   .btn-chip:hover{filter:brightness(.95);color:#fff}
-  
+  .btn{
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    background-color .2s ease;
+  }
+
+  .btn:hover{
+  transform:translateY(-1px);
+  } 
+
+  .btn:active{
+  transform:translateY(0);
+  }
+
   /* ===== Banner (estilos da index original) ===== */
   .banner{margin-top:.75rem}
   .banner img{width:100%;max-height:360px;object-fit:cover;object-position:center;border-radius:18px}
@@ -149,37 +190,143 @@
   /* ===== Rodapé simples (base da index original) ===== */
   footer{background:transparent;border-top:1px solid rgba(0,0,0,.06);padding:1.25rem 0;text-align:center}
   
-  /* Rodapé avançado (swift-footer, adicionado de volta do segundo arquivo - para corrigir index) */
-  .swift-footer{background:#fff;padding-bottom:0}
-  .swift-footer .row.g-4{align-items:stretch}
-  .swift-footer .row.g-4 > [class*="col-"]{display:flex;flex-direction:column;gap:12px}
-  
+  /* =========================================================
+   RODAPÉ PROFISSIONAL
+   ========================================================= */
+
+  .swift-footer{
+    width:100%;
+    margin-top:3rem;
+    background:#3f2923;
+    color:#fff;
+    padding:0;
+  }
+  .swift-footer .container{
+    width:100%;
+  }
+  .swift-footer .row.g-4{
+    align-items:flex-start;
+  }
+  .swift-footer .row.g-4 > [class*="col-"]{
+    display:block;
+  }
+
+  /* Colunas do rodapé */
   .swift-footer .foot-card{
-    display:flex;flex-direction:column;height:100%;
-    background:var(--chip);color:#fff;border-radius:16px;padding:16px;
-    box-shadow:0 2px 0 rgba(0,0,0,.08);min-height:var(--foot-minh);
+    display:block;
+    height:auto;
+    min-height:0;
+    background:transparent;
+    color:#fff;
+    border-radius:0;
+    padding:0;
+    box-shadow:none;
   }
-  .swift-footer .foot-card > .foot-pill{
-    display:inline-flex;align-items:center;gap:.75rem;
-    background:var(--tile-weak);color:var(--brown);
-    border-radius:999px;padding:.5rem 1rem;margin:0 auto .9rem;
+
+  /* Títulos */
+  .swift-footer .foot-pill{
+    display:block;
+    background:transparent;
+    color:#fff;
+    border-radius:0;
+    padding:0;
+    margin:0 0 .8rem;
+    font-weight:800;
+    font-size:1rem;
   }
-  .swift-footer .foot-card > .foot-pill i{
-    background:#fff;width:28px;height:28px;border-radius:50%;
-    display:grid;place-items:center;color:var(--chip);font-size:16px;
+
+  /* Ícones dos títulos */
+  .swift-footer .foot-pill i{
+    display:inline-grid;
+    place-items:center;
+    width:28px;
+    height:28px;
+    margin-right:.45rem;
+    background:rgba(255,255,255,.12);
+    color:#fff;
+    border-radius:50%;
   }
-  .swift-footer .foot-text{line-height:1.3;text-align:left}
-  .swift-footer .foot-strong{font-weight:800;font-size:1.1rem}
-  .swift-footer .foot-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.35rem;text-align:left}
-  .swift-footer .pay-area{text-align:left}
+
+  /* Textos */
+  .swift-footer .foot-text{
+    line-height:1.6;
+    text-align:left;
+    color:rgba(255,255,255,.78);
+  }
+
+  /* Destaques */
+  .swift-footer .foot-strong{
+    font-weight:800;
+    font-size:1.05rem;
+    color:#fff;
+  }
+
+  /* Links */
+  .swift-footer .foot-list{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:flex;
+    flex-direction:column;
+    gap:.5rem;
+    text-align:left;
+  }
+  .swift-footer .foot-list a{
+    color:rgba(255,255,255,.78);
+    text-decoration:none;
+    transition:
+      color .2s ease,
+      padding-left .2s ease;
+  }
+  .swift-footer .foot-list a:hover{
+    color:#fff;
+    padding-left:4px;
+  }
+
+  /* Área de pagamentos */
+  .swift-footer .pay-area{
+    text-align:left;
+  }
+
   .swift-footer .pay-area .foot-badge{
-    display:inline-block;background:var(--tile-weak);color:var(--brown);
-    font-weight:800;border-radius:999px;padding:.5rem 1rem;margin-left:0;
+    display:block;
+    background:transparent;
+    color:#fff;
+    font-weight:800;
+    border-radius:0;
+    padding:0;
+    margin:0 0 .8rem;
   }
-  .swift-footer .pay-area .pay-logos{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:flex-start}
-  .pay-logo{height:40px;object-fit:contain}
-  .swift-footer .foot-bar{background:var(--chip);color:#fff;padding:.6rem 0;margin-top:1.5rem}
-  
+
+  .swift-footer .pay-area .pay-logos{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
+    justify-content:flex-start;
+  }
+
+  .swift-footer .pay-logos img{
+    height:28px;
+    width:auto;
+    opacity:.9;
+    transition:opacity .2s ease, transform .2s ease;
+  }
+
+  .swift-footer .pay-logos img:hover{
+    opacity:1;
+    transform:translateY(-2px);
+  }
+
+  /* Barra inferior */
+  .swift-footer .foot-bar{
+    background:rgba(0,0,0,.18);
+    color:rgba(255,255,255,.8);
+    padding:.9rem 0;
+    margin-top:2.5rem;
+    border-top:1px solid rgba(255,255,255,.08);
+  }
+
   /* =========================================================
      PÁGINA “MONTE SEU CARDÁPIO” (ajustes específicos, adicionado de volta do segundo arquivo - para index se aplicável)
      ========================================================= */
@@ -361,4 +508,52 @@
   border-radius:12px;
   padding:2px 8px;
   font-weight:700;
+}
+
+/* ===== Botão voltar ao topo ===== */
+
+.back-to-top{
+  position:fixed;
+  right:24px;
+  bottom:24px;
+  width:46px;
+  height:46px;
+  border:0;
+  border-radius:50%;
+  background:var(--swift-red);
+  color:#fff;
+  display:grid;
+  place-items:center;
+  font-size:1.1rem;
+  cursor:pointer;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(10px);
+  transition:
+    opacity .25s ease,
+    visibility .25s ease,
+    transform .25s ease,
+    background-color .2s ease;
+  box-shadow:0 8px 20px rgba(0,0,0,.18);
+  z-index:1020;
+}
+
+.back-to-top:hover{
+  background:var(--chip-700);
+  transform:translateY(-2px);
+}
+
+.back-to-top.show{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+
+@media (max-width:576px){
+  .back-to-top{
+    right:16px;
+    bottom:16px;
+    width:42px;
+    height:42px;
+  }
 }
