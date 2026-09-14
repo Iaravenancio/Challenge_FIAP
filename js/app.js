@@ -309,43 +309,64 @@ document.addEventListener('DOMContentLoaded', () => {
   formPF?.addEventListener('submit', validarEEnviarPF);
   formPJ?.addEventListener('submit', validarEEnviarPJ);
 });
-/* ===== Header: render "Bem-vindo" + esconder/mostrar botões e logout ===== */
-document.addEventListener('DOMContentLoaded', () => {
-  const welcome = document.getElementById('welcomeSlot');
-  const authBtns = document.querySelectorAll('#userActions [data-auth]');
 
-  function setAuthUI(user){
-    if (user && user.name){
-      // mostra pill "Bem-vindo"
-      welcome.innerHTML = `Bem-vindo <strong>${user.name}</strong> 
-        <a href="#" id="logoutLink" class="ms-2 link-light text-decoration-underline small">(sair)</a>`;
-      welcome.classList.remove('d-none');
+const welcome = document.getElementById('welcomeSlot');
+const authBtns = document.querySelectorAll(
+  '#userActions [data-auth="login"], #userActions [data-auth="signup"]'
+);
+const logoutBtn = document.querySelector(
+  '#userActions [data-auth="logout"]'
+);
+function setAuthUI(user) {
+  if (user && user.name) {
+    // Usuário logado
+    welcome.innerHTML = `
+      Olá, <strong>${user.name}</strong>
+    `;
+    welcome.classList.remove('d-none');
 
-      // esconde botões de login/cadastro/esqueci
-      authBtns.forEach(b => b.classList.add('d-none'));
+    // Esconde os botões de login/cadastro
+    authBtns.forEach(button => {
+      button.classList.add('d-none');
+    });
 
-      // logout
-      document.getElementById('logoutLink')?.addEventListener('click', (e)=>{
-        e.preventDefault();
-        localStorage.removeItem('swift_user');
-        location.reload();
-      });
-    } else {
-      // se não houver usuário: some o welcome e mostra botões
-      welcome.classList.add('d-none');
-      authBtns.forEach(b => b.classList.remove('d-none'));
-    }
+    // Mostra o botão Sair
+    logoutBtn?.classList.remove('d-none');
+  } else {
+
+    // Usuário deslogado
+    welcome.classList.add('d-none');
+
+    // Mostra login/cadastro
+    authBtns.forEach(button => {
+      button.classList.remove('d-none');
+    });
+
+    // Esconde Sair
+    logoutBtn?.classList.add('d-none');
   }
+}
 
-  try {
-    const stored = localStorage.getItem('swift_user');
-    const user = stored ? JSON.parse(stored) : null;
-    setAuthUI(user);
-  } catch(e){
-    console.warn('swift_user inválido no localStorage', e);
-    setAuthUI(null);
-  }
+logoutBtn?.addEventListener('click', () => {
+  // Remove somente a sessão
+  localStorage.removeItem('swift_user');
+
+  // Atualiza o cabeçalho
+  setAuthUI(null);
 });
+
+const stored = localStorage.getItem('swift_user');
+
+let user = null;
+
+try {
+  user = stored ? JSON.parse(stored) : null;
+} catch (error) {
+  console.warn('Sessão inválida. Limpando sessão.');
+  localStorage.removeItem('swift_user');
+}
+
+setAuthUI(user);
 
 /* ===== Finalizar compra ===== */
 
