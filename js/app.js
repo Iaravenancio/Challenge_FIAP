@@ -393,3 +393,31 @@ document.addEventListener('click', (e) => {
   window.location.href = 'finalizacao.html';
 
 });
+
+
+/* ===== Voltar ao topo ===== */
+
+document.addEventListener('DOMContentLoaded', () => {
+  const backToTop = document.getElementById('backToTop');
+
+  if (!backToTop) return;
+
+  function atualizarBotaoTopo() {
+    if (window.scrollY > 400) {
+      backToTop.classList.add('show');
+    } else {
+      backToTop.classList.remove('show');
+    }
+  }
+
+  window.addEventListener('scroll', atualizarBotaoTopo);
+
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+
+  atualizarBotaoTopo();
+});
