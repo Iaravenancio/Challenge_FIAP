@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Pedido realizado | Swift</title>
+
+  <!-- Bootstrap -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+
+  <!-- Bootstrap Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+  >
+
+  <!-- CSS do projeto -->
+  <link rel="stylesheet" href="css/theme.css">
+</head>
+
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header class="header py-3">
+    <div class="container">
+
+      <div class="row g-3 align-items-center">
+
+        <!-- Logo -->
+        <div class="col-12 col-lg-3 d-flex align-items-center">
+          <a href="index.html">
+            <img
+              src="images/logo_swift.png"
+              class="img-fluid"
+              style="max-height: 42px;"
+              alt="Swift"
+            >
+          </a>
+        </div>
+
+        <!-- Busca -->
+        <div class="col-12 col-lg-6">
+
+          <form
+            id="searchForm"
+            class="search-bar d-flex align-items-center px-3"
+            role="search"
+          >
+
+            <input
+              id="searchInput"
+              class="search-input form-control border-0 bg-transparent"
+              type="search"
+              placeholder="O que você quer cozinhar hoje?"
+              aria-label="Buscar produtos"
+              autocomplete="off"
+            >
+
+            <button
+              class="search-btn btn btn-link p-0 ms-2"
+              type="submit"
+              aria-label="Buscar"
+            >
+              <i class="bi bi-search"></i>
+            </button>
+
+          </form>
+
+        </div>
+
+        <!-- Carrinho e conta -->
+        <div id="userActions" class="col-12 col-lg-3">
+
+          <div
+            class="d-flex flex-wrap justify-content-lg-end align-items-center gap-2"
+          >
+
+            <a
+              href="carrinho.html"
+              class="btn cart-cta d-flex align-items-center"
+            >
+              <i class="bi bi-cart2 me-2"></i>
+
+              <span class="fw-semibold me-2">
+                Carrinho
+              </span>
+
+              <span
+                class="badge cart-badge"
+                data-cart-count
+              >
+                0
+              </span>
+            </a>
+
+            <a
+              href="login.html"
+              class="btn btn-primary"
+              data-auth="login"
+            >
+              Já tenho conta
+            </a>
+
+            <a
+              href="cadastro.html"
+              class="btn btn-light"
+              data-auth="signup"
+            >
+              Criar nova conta
+            </a>
+
+            <a
+              href="cadastro.html#forgot"
+              class="link-dark small"
+              data-auth="forgot"
+            >
+              Esqueci a senha
+            </a>
+
+            <div
+              id="welcomeSlot"
+              class="welcome-pill d-none"
+            ></div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ================= NAVEGAÇÃO ================= -->
+  <nav class="py-2">
+    <div class="container">
+
+      <div class="d-flex flex-wrap gap-2">
+
+        <a
+          href="index.html"
+          class="nav-chip text-decoration-none"
+        >
+          Página Inicial
+        </a>
+
+        <a
+          href="bovinos.html"
+          class="nav-chip text-decoration-none"
+        >
+          Bovina
+        </a>
+
+        <a
+          href="index.html#ofertas"
+          class="nav-chip text-decoration-none"
+        >
+          Ofertas
+        </a>
+
+        <a
+          href="ar.html"
+          class="nav-chip text-decoration-none"
+        >
+          Cozinhe com AR
+        </a>
+
+      </div>
+
+    </div>
+  </nav>
+
+
+  <!-- ================= CONTEÚDO ================= -->
+  <main class="container py-5">
+
+    <div class="row justify-content-center">
+
+      <div class="col-12 col-md-8 col-lg-6">
+
+        <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5 text-center">
+
+          <!-- Ícone -->
+          <div class="mb-4">
+
+            <div
+              class="mx-auto d-flex align-items-center justify-content-center rounded-circle"
+              style="
+                width: 80px;
+                height: 80px;
+                background-color: #d44f36;
+                color: white;
+                font-size: 40px;
+              "
+            >
+              <i class="bi bi-check-lg"></i>
+            </div>
+
+          </div>
+
+
+          <!-- Título -->
+          <h1 class="fw-bold mb-3">
+            Pedido realizado com sucesso!
+          </h1>
+
+
+          <!-- Mensagem -->
+          <p class="text-muted mb-4">
+            Obrigado por comprar na Swift!
+            Seu pedido foi recebido e está sendo preparado.
+          </p>
+
+
+          <!-- Valor -->
+          <div class="bg-light rounded-3 p-3 mb-4">
+
+            <div class="small text-muted mb-1">
+              Total do pedido
+            </div>
+
+            <div
+              class="fs-3 fw-bold text-brown"
+              id="orderTotal"
+            >
+              R$ 0,00
+            </div>
+
+          </div>
+
+
+          <!-- Informação -->
+          <p class="small text-muted mb-4">
+            Esta é uma demonstração do fluxo de compra
+            desenvolvido para o projeto Swift.
+          </p>
+
+
+          <!-- Botões -->
+          <div class="d-flex flex-column gap-2">
+
+            <a
+              href="index.html"
+              class="btn btn-primary btn-lg"
+            >
+              <i class="bi bi-house-door me-2"></i>
+              Voltar para a página inicial
+            </a>
+
+            <a
+              href="carrinho.html"
+              class="btn btn-outline-secondary"
+            >
+              Voltar para o carrinho
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="swift-footer py-4">
+
+    <div class="container">
+
+      <div class="row g-3">
+
+        <!-- Atendimento -->
+        <div class="col-12 col-md-6 col-lg-3">
+
+          <div class="foot-card h-100">
+
+            <h5 class="fw-bold">
+              Atendimento
+            </h5>
+
+            <p class="small mb-2">
+              Precisa de ajuda?
+            </p>
+
+            <p class="small mb-0">
+              Estamos aqui para ajudar você.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- Institucional -->
+        <div class="col-12 col-md-6 col-lg-3">
+
+          <div class="foot-card h-100">
+
+            <h5 class="fw-bold">
+              Institucional
+            </h5>
+
+            <p class="small mb-2">
+              Sobre a Swift
+            </p>
+
+            <p class="small mb-0">
+              Qualidade e praticidade para sua cozinha.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- Segurança -->
+        <div class="col-12 col-md-6 col-lg-3">
+
+          <div class="foot-card h-100">
+
+            <h5 class="fw-bold">
+              Segurança
+            </h5>
+
+            <p class="small mb-2">
+              Compra segura
+            </p>
+
+            <p class="small mb-0">
+              Seus dados são tratados com segurança.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- Pagamento -->
+        <div class="col-12 col-md-6 col-lg-3">
+
+          <div class="foot-card h-100">
+
+            <h5 class="fw-bold">
+              Pagamento
+            </h5>
+
+            <p class="small mb-2">
+              Formas de pagamento
+            </p>
+
+            <p class="small mb-0">
+              Consulte as opções disponíveis no projeto.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="text-center mt-4">
+
+        <p class="small mb-0">
+          © 2026 Swift. Projeto acadêmico FIAP.
+        </p>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- Bootstrap JS -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+  ></script>
+
+  <!-- JavaScript do projeto -->
+  <script src="js/app.js"></script>
+
+
+  <!-- ================= FINALIZAÇÃO ================= -->
+  <script>
+
+    document.addEventListener('DOMContentLoaded', () => {
+
+      const total = localStorage.getItem('swift_order_total');
+
+      const totalElement = document.getElementById('orderTotal');
+
+      if (total && totalElement) {
+        totalElement.textContent = total;
+      }
+
+      // O valor já foi utilizado.
+      // Remove para evitar que apareça em uma próxima visita.
+      localStorage.removeItem('swift_order_total');
+
+    });
+
+  </script>
+
+</body>
+</html>

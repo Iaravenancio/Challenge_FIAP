@@ -347,7 +347,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-/* ===== Finalizar compra - demonstração ===== */
+/* ===== Finalizar compra ===== */
 
 document.addEventListener('click', (e) => {
 
@@ -368,8 +368,13 @@ document.addEventListener('click', (e) => {
 
   if (!confirmar) return;
 
-  clearCart();
-  renderCartPage();
+  // Salva o total para mostrar na próxima página
+  localStorage.setItem('swift_order_total', total);
 
-  toast('Pedido realizado com sucesso! 🎉');
+  // Limpa o carrinho
+  clearCart();
+
+  // Vai para a página de confirmação
+  window.location.href = 'finalizacao.html';
+
 });
