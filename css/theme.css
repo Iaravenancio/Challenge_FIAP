@@ -777,9 +777,11 @@ main.container{
 
 .selos{
   display:flex;
-  justify-content:space-between;
+  justify-content:center;
   align-items:flex-start;
-  gap:24px;
+  gap:clamp(24px, 4vw, 70px);
+  width:100%;
+  flex-wrap:nowrap;
 }
 
 .selos .pill{
