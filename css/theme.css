@@ -477,29 +477,27 @@
   
   /* ===== Responsivo base (para index) ===== */
   @media (max-width:992px){
-    .tray-thumb{height:180px}
-    .pill{width:96px;
-      height:96px;
-      border-radius:48px}
+    .tray-thumb{
+      height:180px
+    }
     .selos{
       gap:12px;
       justify-content:center;
     }
+
     .selos .pill{
-      width:auto;
-      height:auto;
-      min-width:120px;
-      min-height:82px;
-      border-radius:14px;
-      padding:10px;
+      width:96px;
+      height:96px;
+      min-width:96px;
+      min-height:96px;
+      border-radius:48px;
+      padding:0;
     }
+
     .selos .pill img{
-      width:42px;
-      height:42px;
-    }
-    .pill img{
       width:48px;
-      height:48px}
+      height:48px;
+    }
   }
   /* Pill "Bem-vindo, Nome" */
 .welcome-pill{
