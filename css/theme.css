@@ -162,6 +162,23 @@
     object-position:center;
     border-radius:18px
   }
+  /* =========================================================
+   BOTÃO DO BANNER
+   ========================================================= */
+
+  .banner > .btn{
+    padding:.7rem 1.1rem;
+    border-radius:10px !important;
+    box-shadow:0 5px 14px rgba(0,0,0,.15);
+    transition:
+      transform .2s ease,
+      box-shadow .2s ease;
+  }
+
+  .banner > .btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 18px rgba(0,0,0,.20);
+  }
   
   /* ===== Selos (estilos da index original) ===== */
   .selos{margin-top:1.25rem}
@@ -215,9 +232,14 @@
     color:#fff;
     padding:0;
   }
+  
   .swift-footer .container{
-    width:100%;
+    width:calc(100% - 32px);
+    max-width:1760px;
+    margin-left:auto;
+    margin-right:auto;
   }
+
   .swift-footer .row.g-4{
     align-items:flex-start;
   }
@@ -801,4 +823,182 @@ main.container{
 .selos .pill img{
   width:60px;
   height:60px;
+}
+
+/* =========================================================
+   OFERTAS DO DIA — ACABAMENTO DOS CARDS
+   ========================================================= */
+
+.ofertas .row{
+  align-items:stretch;
+}
+
+.ofertas .card-tray{
+  border:1px solid rgba(0,0,0,.07);
+  border-radius:16px;
+  overflow:hidden;
+  background:#fff;
+  box-shadow:0 4px 14px rgba(0,0,0,.05);
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
+}
+
+.ofertas .card-tray:hover{
+  transform:translateY(-4px);
+  box-shadow:0 10px 24px rgba(0,0,0,.10);
+}
+
+.ofertas .tray-thumb{
+  height:190px;
+  object-fit:cover;
+  background:#f3eee9;
+}
+
+.ofertas .card-body{
+  padding:1rem;
+}
+
+.ofertas .card-body h6{
+  line-height:1.35;
+  min-height:2.7em;
+}
+
+.ofertas .card-body .fw-black{
+  font-size:1.15rem;
+  color:#1b1b1b;
+}
+
+.ofertas .card-body .btn{
+  width:100%;
+  border-radius:10px;
+  font-weight:700;
+  padding:.65rem .8rem;
+  transition:
+    transform .15s ease,
+    box-shadow .15s ease;
+}
+
+.ofertas .card-body .btn:hover{
+  transform:translateY(-1px);
+  box-shadow:0 5px 12px rgba(0,0,0,.12);
+}
+
+/* Telas menores */
+@media (max-width:768px){
+
+  .ofertas .tray-thumb{
+    height:160px;
+  }
+
+  .ofertas .card-body{
+    padding:.8rem;
+  }
+
+  .ofertas .card-body h6{
+    font-size:.75rem;
+  }
+
+  .ofertas .card-body .fw-black{
+    font-size:1rem;
+  }
+
+}
+
+
+/* =========================================================
+   CARDÁPIO + AR — ACABAMENTO
+   ========================================================= */
+
+main > section.mt-4 > .row > .col-lg-4 .card-tray{
+  border:1px solid rgba(0,0,0,.07);
+  border-radius:16px;
+  overflow:hidden;
+  background:#fff;
+  box-shadow:0 4px 14px rgba(0,0,0,.05);
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
+}
+
+main > section.mt-4 > .row > .col-lg-4 .card-tray:hover{
+  transform:translateY(-4px);
+  box-shadow:0 10px 24px rgba(0,0,0,.10);
+}
+
+main > section.mt-4 > .row > .col-lg-4 .tray-thumb{
+  height:220px;
+  object-fit:cover;
+}
+
+main > section.mt-4 > .row > .col-lg-4 .card-body{
+  padding:1rem;
+}
+
+main > section.mt-4 > .row > .col-lg-4 .card-body h6{
+  line-height:1.4;
+  min-height:2.8em;
+}
+
+main > section.mt-4 > .row > .col-lg-4 .card-body .btn{
+  border-radius:10px;
+  font-weight:700;
+}
+
+
+/* =========================================================
+   KIT CHURRASCO — ACABAMENTO
+   ========================================================= */
+
+main > section.mt-4 > .row > .col-lg-8 .card-tray{
+  border:1px solid rgba(0,0,0,.07);
+  border-radius:16px;
+  overflow:hidden;
+  background:#fff;
+  box-shadow:0 4px 14px rgba(0,0,0,.05);
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
+}
+
+main > section.mt-4 > .row > .col-lg-8 .card-tray:hover{
+  transform:translateY(-4px);
+  box-shadow:0 10px 24px rgba(0,0,0,.10);
+}
+
+main > section.mt-4 > .row > .col-lg-8 .tray-thumb{
+  height:175px;
+  object-fit:cover;
+}
+
+main > section.mt-4 > .row > .col-lg-8 .card-body{
+  padding:.9rem;
+}
+
+main > section.mt-4 > .row > .col-lg-8 .card-body h6{
+  line-height:1.35;
+  min-height:2.7em;
+}
+
+main > section.mt-4 > .row > .col-lg-8 .card-body .btn{
+  border-radius:10px;
+  font-weight:700;
+}
+
+/* =========================================================
+   TÍTULOS DAS SEÇÕES
+   ========================================================= */
+
+.section-bar{
+  display:flex;
+  align-items:center;
+  min-height:42px;
+  margin-bottom:.75rem;
+  padding:.55rem 1rem;
+  border-radius:10px;
+  background:var(--swift-red);
+  color:#fff;
+  font-weight:700;
+  letter-spacing:.2px;
+  box-shadow:0 3px 10px rgba(0,0,0,.06);
 }
