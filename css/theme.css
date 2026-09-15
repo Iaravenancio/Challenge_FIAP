@@ -155,7 +155,13 @@
 
   /* ===== Banner (estilos da index original) ===== */
   .banner{margin-top:.75rem}
-  .banner img{width:100%;max-height:360px;object-fit:cover;object-position:center;border-radius:18px}
+  .banner img{
+    width:100%;
+    max-height:320px;
+    object-fit:cover;
+    object-position:center;
+    border-radius:18px
+  }
   
   /* ===== Selos (estilos da index original) ===== */
   .selos{margin-top:1.25rem}
@@ -566,8 +572,8 @@
 /* Aproveita melhor a largura da tela */
 .header > .container,
 main.container{
-  width:calc(100% - 48px);
-  max-width:1680px;
+  width:calc(100% - 32px);
+  max-width:1760px;
 }
 
 /* Header mais compacto */
