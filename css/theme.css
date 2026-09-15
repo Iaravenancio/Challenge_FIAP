@@ -22,7 +22,11 @@
   html{scroll-behavior:smooth;
   scroll-padding-top:120px;
   }
-  body{background:var(--page);color:#1b1b1b}
+  body{
+    background:var(--page);
+    color:#1b1b1b;
+    font-family:'Lato', sans-serif;
+  }
   
   .fw-black{font-weight:900}
   .text-brown{color:var(--brown)!important}
@@ -1002,3 +1006,16 @@ main > section.mt-4 > .row > .col-lg-8 .card-body .btn{
   letter-spacing:.2px;
   box-shadow:0 3px 10px rgba(0,0,0,.06);
 }
+
+/* =========================================================
+   TIPOGRAFIA — TÍTULOS
+   ========================================================= */
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6{
+    font-family:'Lato', sans-serif;
+  }
