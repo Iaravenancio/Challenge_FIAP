@@ -650,6 +650,7 @@ main.container{
   flex-wrap:nowrap;
   overflow-x:auto;
   scrollbar-width:none;
+  justify-content:center;
 }
 
 .header .nav-chips::-webkit-scrollbar{
