@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Duplo clique no total do rodapé limpa o carrinho (atalho)
   document.querySelector('footer [data-cart-total]')?.addEventListener('dblclick', () => {
-    if (confirm('Limpar carrinho?')) clearCart();
+    clearCart();
   });
 });
 
@@ -219,10 +219,10 @@ document.addEventListener('click', (e) => {
   // limpar
   if (e.target.closest('[data-clear]')) {
     e.preventDefault();
-    if (confirm('Limpar carrinho?')) {
-      clearCart();
-      renderCartPage();
-    }
+
+    clearCart();
+    renderCartPage();
+
     return;
   }
 
@@ -462,8 +462,123 @@ const catalogoProdutos = {
     embalagem: 'EMBALAGEM',
     categoria: 'BOVINOS',
     descricao: 'Combo de contrafilé para deixar suas refeições ainda mais práticas e saborosas.'
-  }
+  },
+    fettuccine: {
+    nome: 'MASSA FETTUCCINE',
+    preco: 19.90,
+    imagem: 'images/fettutine.png',
+    embalagem: 'EMBALAGEM',
+    categoria: 'OFERTAS DO DIA',
+    descricao: 'Massa Fettuccine ideal para preparar diferentes receitas e acompanhar seus pratos favoritos.'
+  },
 
+  espaguete: {
+    nome: 'ESPAGUETE',
+    preco: 16.90,
+    imagem: 'images/massa.png',
+    embalagem: 'EMBALAGEM',
+    categoria: 'OFERTAS DO DIA',
+    descricao: 'Espaguete prático e versátil para preparar massas deliciosas no dia a dia.'
+  },
+
+  'bife-oferta': {
+    nome: 'BIFE DE CONTRA FILÉ',
+    preco: 35.90,
+    imagem: 'images/bife_gado.png',
+    embalagem: 'PREÇO AO KG',
+    categoria: 'OFERTAS DO DIA',
+    descricao: 'Bife de contra filé selecionado, ideal para preparar na frigideira, grelha ou churrasqueira.'
+  },
+
+  sobrecoxa: {
+    nome: 'SOBRECOXA COM BACON',
+    preco: 21.90,
+    imagem: 'images/sobrecoxa.png',
+    embalagem: 'EMBALAGEM',
+    categoria: 'OFERTAS DO DIA',
+    descricao: 'Sobrecoxa com bacon, uma opção prática e saborosa para suas refeições.'
+  },
+
+  bisteca: {
+    nome: 'BISTECA',
+    preco: 24.90,
+    imagem: 'images/bisteca_porco.png',
+    embalagem: 'EMBALAGEM',
+    categoria: 'OFERTAS DO DIA',
+    descricao: 'Bisteca suína selecionada, ideal para preparar grelhada, assada ou na frigideira.'
+  },
+
+  'pack-long-neck': {
+    nome: 'PACK 6 LONG NECK',
+    preco: 38.99,
+    imagem: 'images/cerveja.png',
+    embalagem: 'PACK COM 6 UNIDADES',
+    categoria: 'KIT CHURRASCO',
+    descricao: 'Pack com 6 unidades para acompanhar seu churrasco.'
+  },
+
+  carvao: {
+    nome: 'CARVÃO 5KG',
+    preco: 19.50,
+    imagem: 'images/carvao.png',
+    embalagem: 'SACO DE 5KG',
+    categoria: 'KIT CHURRASCO',
+    descricao: 'Carvão para preparar seu churrasco.'
+  },
+
+  grelha: {
+    nome: 'GRELHA 50X50',
+    preco: 64.99,
+    imagem: 'images/grelha.png',
+    embalagem: 'UNIDADE',
+    categoria: 'KIT CHURRASCO',
+    descricao: 'Grelha 50x50 para preparar carnes e outros alimentos na churrasqueira.'
+  },
+
+  'kit-talheres': {
+    nome: 'KIT TALHERES',
+    preco: 30.00,
+    imagem: 'images/talheres.png',
+    embalagem: 'KIT',
+    categoria: 'KIT CHURRASCO',
+    descricao: 'Kit de talheres para completar seu churrasco.'
+  },
+
+  'tabua-madeira': {
+    nome: 'TÁBUA DE MADEIRA',
+    preco: 28.99,
+    imagem: 'images/tabua.png',
+    embalagem: 'UNIDADE',
+    categoria: 'KIT CHURRASCO',
+    descricao: 'Tábua de madeira para preparar e servir suas carnes.'
+  },
+
+  'pao-alho': {
+    nome: 'PÃO DE ALHO 150G',
+    preco: 12.50,
+    imagem: 'images/pao_de_alho.png',
+    embalagem: 'EMBALAGEM DE 150G',
+    categoria: 'KIT CHURRASCO',
+    descricao: 'Pão de alho para acompanhar seu churrasco.'
+  },
+
+  espetinhos: {
+    nome: 'ESPETINHOS',
+    preco: 15.00,
+    imagem: 'images/espetinho.png',
+    embalagem: 'EMBALAGEM',
+    categoria: 'KIT CHURRASCO',
+    descricao: 'Espetinhos práticos para preparar na churrasqueira.'
+  },
+
+  linguica: {
+    nome: 'LINGUIÇA SUÍNA 300G',
+    preco: 18.99,
+    imagem: 'images/linguica.png',
+    embalagem: 'EMBALAGEM DE 300G',
+    categoria: 'KIT CHURRASCO',
+    descricao: 'Linguiça suína para completar seu churrasco.'
+  }
 };
 
 
