@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-bs-theme="light">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Swift — Produto</title>
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    rel="stylesheet"
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="css/theme.css">
+
+  <style>
+    .produto-page{
+      padding-top:2rem;
+      padding-bottom:3rem;
+    }
+
+    .produto-card{
+      background:#fff;
+      border-radius:24px;
+      padding:2rem;
+      box-shadow:0 8px 28px rgba(0,0,0,.08);
+    }
+
+    .produto-imagem{
+      width:100%;
+      height:420px;
+      object-fit:contain;
+      background:#f6e8db;
+      border-radius:20px;
+      padding:1.5rem;
+    }
+
+    .produto-titulo{
+      color:var(--brown);
+      font-weight:900;
+      text-transform:uppercase;
+      margin-bottom:.5rem;
+    }
+
+    .produto-preco{
+      font-size:2rem;
+      font-weight:900;
+      color:#1b1b1b;
+      margin:1rem 0;
+    }
+
+    .produto-info{
+      color:#666;
+      margin-bottom:1.5rem;
+    }
+
+    .quantidade-box{
+      display:flex;
+      align-items:center;
+      gap:.5rem;
+      margin-bottom:1.5rem;
+    }
+
+    .quantidade-box button{
+      width:42px;
+      height:42px;
+      border-radius:10px;
+    }
+
+    .quantidade-box input{
+      width:60px;
+      height:42px;
+      text-align:center;
+      border:1px solid #ddd;
+      border-radius:10px;
+      font-weight:700;
+    }
+
+    .produto-acoes{
+      display:flex;
+      gap:.75rem;
+      flex-wrap:wrap;
+    }
+
+    .produto-acoes .btn{
+      min-height:48px;
+      padding:.7rem 1.3rem;
+      border-radius:12px;
+      font-weight:800;
+    }
+
+    .produto-voltar{
+      display:inline-flex;
+      align-items:center;
+      gap:.4rem;
+      color:var(--brown);
+      text-decoration:none;
+      font-weight:700;
+      margin-bottom:1rem;
+    }
+
+    .produto-voltar:hover{
+      color:var(--swift-red);
+    }
+
+    @media (max-width:768px){
+      .produto-card{
+        padding:1rem;
+      }
+
+      .produto-imagem{
+        height:300px;
+      }
+
+      .produto-preco{
+        font-size:1.6rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="header bg-cream sticky-top">
+
+  <div class="container py-3">
+
+    <div class="row g-3 align-items-center">
+
+      <!-- LOGO -->
+      <div class="col-12 col-lg-3 d-flex align-items-center">
+
+        <a href="index.html">
+          <img
+            src="images/logo_swift.png"
+            class="img-fluid"
+            style="max-height:42px;"
+            alt="Swift"
+          >
+        </a>
+
+      </div>
+
+      <!-- BUSCA -->
+      <div class="col-12 col-lg-6">
+
+        <form
+          id="searchForm"
+          class="search-bar d-flex align-items-center px-3"
+          role="search"
+        >
+
+          <input
+            id="searchInput"
+            class="search-input form-control border-0 bg-transparent"
+            type="search"
+            placeholder="O que você quer cozinhar hoje?"
+            aria-label="Buscar produtos"
+            autocomplete="off"
+          >
+
+          <button
+            class="search-btn btn btn-link p-0 ms-2"
+            type="submit"
+            aria-label="Buscar"
+          >
+            <i class="bi bi-search"></i>
+          </button>
+
+        </form>
+
+      </div>
+
+      <!-- CARRINHO / CONTA -->
+      <div id="userActions" class="col-12 col-lg-3">
+
+        <div class="d-flex flex-wrap justify-content-lg-end align-items-center gap-2">
+
+          <a
+            href="login.html"
+            class="btn btn-primary"
+            data-auth="login"
+          >
+            Já tenho conta
+          </a>
+
+          <a
+            href="cadastro.html"
+            class="btn btn-light"
+            data-auth="signup"
+          >
+            Criar nova conta
+          </a>
+
+          <a
+            href="carrinho.html"
+            class="btn cart-cta d-flex align-items-center"
+          >
+            <i class="bi bi-cart2 me-2"></i>
+
+            <span class="fw-semibold me-2">
+              Carrinho
+            </span>
+
+            <span
+              class="badge cart-badge"
+              data-cart-count
+            >
+              0
+            </span>
+
+          </a>
+
+          <a
+            href="cadastro.html#forgot"
+            class="link-dark small"
+            data-auth="forgot"
+          >
+            Esqueci a senha
+          </a>
+
+          <div
+            id="welcomeSlot"
+            class="welcome-pill d-none"
+          ></div>
+
+          <button
+            type="button"
+            class="btn btn-outline-dark d-none"
+            data-auth="logout"
+          >
+            <i class="bi bi-box-arrow-right me-1"></i>
+            Sair
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- MENU -->
+    <nav class="nav-chips d-flex align-items-center gap-2 mt-3">
+
+      <a
+        class="nav-chip"
+        href="index.html"
+      >
+        Página Inicial
+      </a>
+
+      <div class="dropdown">
+
+        <button
+          class="nav-chip dropdown-toggle"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Categorias
+        </button>
+
+        <ul class="dropdown-menu shadow border-0 rounded-4 p-3">
+
+          <li>
+            <a
+              class="dropdown-item fw-bold py-2"
+              href="bovinos.html"
+            >
+              Bovina
+            </a>
+          </li>
+
+          <li>
+            <span class="dropdown-item text-muted">
+              Suína
+            </span>
+          </li>
+
+          <li>
+            <span class="dropdown-item text-muted">
+              Aves
+            </span>
+          </li>
+
+          <li>
+            <span class="dropdown-item text-muted">
+              Outros produtos
+            </span>
+          </li>
+
+          <li>
+            <span class="dropdown-item text-muted">
+              Acessórios
+            </span>
+          </li>
+
+        </ul>
+
+      </div>
+
+      <a class="nav-chip" href="index.html#ofertas">
+        Promoções
+      </a>
+
+      <a class="nav-chip" href="#">
+        Lojas Físicas
+      </a>
+
+      <a class="nav-chip" href="#">
+        Entre em Contato
+      </a>
+
+      <a class="nav-chip" href="#">
+        Sobre Nós
+      </a>
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+<main class="container produto-page">
+
+  <a
+    href="bovinos.html"
+    class="produto-voltar"
+  >
+    <i class="bi bi-arrow-left"></i>
+    Voltar para Bovinos
+  </a>
+
+
+  <section class="produto-card">
+
+    <div class="row g-4 align-items-center">
+
+      <!-- IMAGEM -->
+      <div class="col-12 col-lg-6">
+
+        <img
+          id="produtoImagem"
+          src="images/moida_patinho.png"
+          class="produto-imagem"
+          alt="Carne moída de patinho 1KG"
+        >
+
+      </div>
+
+
+      <!-- INFORMAÇÕES -->
+      <div class="col-12 col-lg-6">
+
+        <div class="small text-muted mb-2">
+          BOVINOS
+        </div>
+
+        <h1
+          id="produtoNome"
+          class="produto-titulo"
+        >
+          CARNE MOÍDA DE PATINHO 1KG
+        </h1>
+
+        <div
+          id="produtoDescricao"
+          class="produto-info"
+        >
+          Carne moída de patinho, selecionada e ultracongelada.
+          Ideal para preparar hambúrgueres, molhos, recheios e
+          diversas receitas do dia a dia.
+        </div>
+
+        <div
+          id="produtoEmbalagem"
+          class="text-muted"
+        >
+          EMBALAGEM DE 1KG
+        </div>
+
+        <div
+          id="produtoPreco"
+          class="produto-preco"
+        >
+          R$ 49,90
+        </div>
+
+
+        <!-- QUANTIDADE -->
+        <div>
+
+          <div class="fw-bold mb-2">
+            Quantidade
+          </div>
+
+          <div class="quantidade-box">
+
+            <button
+              type="button"
+              class="btn btn-light"
+              id="btnMenos"
+              aria-label="Diminuir quantidade"
+            >
+              −
+            </button>
+
+            <input
+              type="number"
+              id="produtoQuantidade"
+              value="1"
+              min="1"
+              max="99"
+            >
+
+            <button
+              type="button"
+              class="btn btn-light"
+              id="btnMais"
+              aria-label="Aumentar quantidade"
+            >
+              +
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- AÇÕES -->
+        <div class="produto-acoes">
+
+          <button
+            type="button"
+            class="btn btn-primary"
+            id="btnAdicionar"
+          >
+            <i class="bi bi-cart-plus me-1"></i>
+            Adicionar ao carrinho
+          </button>
+
+          <a
+            href="carrinho.html"
+            class="btn btn-outline-dark"
+          >
+            Ir para o carrinho
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer class="swift-footer py-4">
+
+  <div class="container">
+
+    <div class="row g-4">
+
+      <div class="col-12 col-md-3">
+
+        <div class="foot-card">
+
+          <div class="foot-pill">
+            <i class="bi bi-headset"></i>
+            <span>CANAIS DE VENDAS</span>
+          </div>
+
+          <div class="foot-text">
+
+            <div>COMPRE PELO TELEVENDAS</div>
+            <div class="foot-strong">(11) 4020-8588</div>
+
+            <div class="mt-2">
+              COMPRE PELO WHATSAPP
+            </div>
+
+            <div class="foot-strong">
+              (11) 4020-8588
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="col-12 col-md-3">
+
+        <div class="foot-card">
+
+          <div class="foot-pill">
+            <i class="bi bi-chat-dots"></i>
+            <span>SWIFT RESOLVE</span>
+          </div>
+
+          <div class="foot-text">
+
+            <div>RESOLVA PELO CHAT</div>
+
+            <div class="mt-2">
+              RESOLVA PELO TELEFONE
+            </div>
+
+            <div class="foot-strong">
+              0800 400 2892
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="col-12 col-md-3">
+
+        <div class="foot-card">
+
+          <div class="foot-pill">
+            <i class="bi bi-hand-index-thumb"></i>
+            <span>PARA VOCÊ!!!</span>
+          </div>
+
+          <ul class="foot-list">
+            <li>RECEITAS SWIFT</li>
+            <li>CHURRASCO SWIFT</li>
+            <li>COZINHE COM AR</li>
+            <li>TRABALHE CONOSCO</li>
+            <li>POLÍTICA DE PRIVACIDADE</li>
+          </ul>
+
+        </div>
+
+      </div>
+
+
+      <div class="col-12 col-md-3">
+
+        <div class="foot-card">
+
+          <div class="foot-pill">
+            <i class="bi bi-info-circle"></i>
+            <span>SOBRE NÓS</span>
+          </div>
+
+          <ul class="foot-list">
+            <li>A NOSSA HISTÓRIA</li>
+            <li>ENCONTRE NOSSAS LOJAS</li>
+            <li>SUSTENTABILIDADE</li>
+            <li>APP SWIFT</li>
+          </ul>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="js/app.js"></script>
+
+
+<script>
+
+  const btnMenos = document.getElementById('btnMenos');
+  const btnMais = document.getElementById('btnMais');
+  const quantidade = document.getElementById('produtoQuantidade');
+  const btnAdicionar = document.getElementById('btnAdicionar');
+
+  btnMenos.addEventListener('click', () => {
+
+    const valor = Number(quantidade.value);
+
+    if (valor > 1) {
+      quantidade.value = valor - 1;
+    }
+
+  });
+
+
+  btnMais.addEventListener('click', () => {
+
+    const valor = Number(quantidade.value);
+
+    if (valor < 99) {
+      quantidade.value = valor + 1;
+    }
+
+  });
+
+
+  btnAdicionar.addEventListener('click', () => {
+
+    const nome = document.getElementById('produtoNome').textContent.trim();
+
+    const precoTexto =
+      document.getElementById('produtoPreco').textContent
+        .replace('R$', '')
+        .replace(/\./g, '')
+        .replace(',', '.')
+        .trim();
+
+    const preco = Number(precoTexto);
+
+    const qtd = Number(quantidade.value);
+
+    for (let i = 0; i < qtd; i++) {
+      window.addToCart(nome, preco);
+    }
+
+    btnAdicionar.innerHTML =
+      '<i class="bi bi-check2 me-1"></i> Adicionado ao carrinho';
+
+    btnAdicionar.classList.remove('btn-primary');
+    btnAdicionar.classList.add('btn-success');
+
+    setTimeout(() => {
+
+      btnAdicionar.innerHTML =
+        '<i class="bi bi-cart-plus me-1"></i> Adicionar ao carrinho';
+
+      btnAdicionar.classList.remove('btn-success');
+      btnAdicionar.classList.add('btn-primary');
+
+    }, 1200);
+
+  });
+
+</script>
+
+</body>
+</html>
