@@ -312,7 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const welcome = document.getElementById('welcomeSlot');
 const authBtns = document.querySelectorAll(
-  '#userActions [data-auth="login"], #userActions [data-auth="signup"]'
+  '#userActions [data-auth="login"], #userActions [data-auth="signup"], #userActions [data-auth="forgot"]'
 );
 const logoutBtn = document.querySelector(
   '#userActions [data-auth="logout"]'
