@@ -421,3 +421,165 @@ document.addEventListener('DOMContentLoaded', () => {
 
   atualizarBotaoTopo();
 });
+
+
+
+/* ===== Página padrão de produto ===== */
+
+const catalogoProdutos = {
+
+  patinho: {
+    nome: 'CARNE MOÍDA DE PATINHO 1KG',
+    preco: 49.90,
+    imagem: 'images/moida_patinho.png',
+    embalagem: 'EMBALAGEM DE 1KG',
+    categoria: 'BOVINOS',
+    descricao: 'Carne moída de patinho, selecionada e ultracongelada. Ideal para hambúrgueres, molhos, recheios e diversas receitas do dia a dia.'
+  },
+
+  almondegas: {
+    nome: 'ALMÔNDEGAS BOVINAS 500G',
+    preco: 18.90,
+    imagem: 'images/almond_bovina.png',
+    embalagem: 'EMBALAGEM DE 500G',
+    categoria: 'BOVINOS',
+    descricao: 'Almôndegas bovinas selecionadas e prontas para preparar. Uma opção prática para suas refeições.'
+  },
+
+  'bife-contrafile': {
+    nome: 'BIFE DE CONTRAFILÉ',
+    preco: 49.90,
+    imagem: 'images/bife_contrafile.png',
+    embalagem: 'PREÇO AO KG',
+    categoria: 'BOVINOS',
+    descricao: 'Bifes de contrafilé selecionados, ideais para preparar na frigideira, churrasqueira ou grelha.'
+  },
+
+  'contrafile-combo': {
+    nome: 'CONTRAFILÉ COMBO 1,1KG',
+    preco: 44.90,
+    imagem: 'images/contrafile_combo.png',
+    embalagem: 'EMBALAGEM',
+    categoria: 'BOVINOS',
+    descricao: 'Combo de contrafilé para deixar suas refeições ainda mais práticas e saborosas.'
+  }
+
+};
+
+
+function carregarProduto() {
+
+  const paginaProduto = document.getElementById('produtoNome');
+
+  if (!paginaProduto) return;
+
+  const parametros = new URLSearchParams(window.location.search);
+  const idProduto = parametros.get('id');
+
+  const produto = catalogoProdutos[idProduto];
+
+  if (!produto) {
+
+    paginaProduto.textContent = 'Produto não encontrado';
+
+    document.getElementById('produtoDescricao').textContent =
+      'O produto que você procura não está disponível.';
+
+    return;
+  }
+
+  document.title = `Swift — ${produto.nome}`;
+
+  const imagem = document.getElementById('produtoImagem');
+  const categoria = document.getElementById('produtoCategoria');
+  const nome = document.getElementById('produtoNome');
+  const descricao = document.getElementById('produtoDescricao');
+  const embalagem = document.getElementById('produtoEmbalagem');
+  const preco = document.getElementById('produtoPreco');
+
+  imagem.src = produto.imagem;
+  imagem.alt = produto.nome;
+
+  categoria.textContent = produto.categoria;
+  nome.textContent = produto.nome;
+  descricao.textContent = produto.descricao;
+  embalagem.textContent = produto.embalagem;
+  preco.textContent = fmtBRL(produto.preco);
+
+  const btnAdicionar = document.getElementById('btnAdicionar');
+  const quantidade = document.getElementById('produtoQuantidade');
+
+  btnAdicionar?.addEventListener('click', () => {
+
+    const qtd = Math.max(
+      1,
+      Number(quantidade.value || 1)
+    );
+
+    for (let i = 0; i < qtd; i++) {
+      addToCart(produto.nome, produto.preco);
+    }
+
+    btnAdicionar.innerHTML =
+      '<i class="bi bi-check2 me-1"></i> Adicionado ao carrinho';
+
+    btnAdicionar.classList.remove('btn-primary');
+    btnAdicionar.classList.add('btn-success');
+
+    setTimeout(() => {
+
+      btnAdicionar.innerHTML =
+        '<i class="bi bi-cart-plus me-1"></i> Adicionar ao carrinho';
+
+      btnAdicionar.classList.remove('btn-success');
+      btnAdicionar.classList.add('btn-primary');
+
+    }, 1200);
+
+  });
+
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  carregarProduto();
+
+  const btnMenos = document.getElementById('btnMenos');
+  const btnMais = document.getElementById('btnMais');
+  const quantidade = document.getElementById('produtoQuantidade');
+
+  btnMenos?.addEventListener('click', () => {
+
+    const valor = Number(quantidade.value || 1);
+
+    if (valor > 1) {
+      quantidade.value = valor - 1;
+    }
+
+  });
+
+
+  btnMais?.addEventListener('click', () => {
+
+    const valor = Number(quantidade.value || 1);
+
+    if (valor < 99) {
+      quantidade.value = valor + 1;
+    }
+
+  });
+
+
+  quantidade?.addEventListener('change', () => {
+
+    let valor = Number(quantidade.value || 1);
+
+    if (valor < 1) valor = 1;
+    if (valor > 99) valor = 99;
+
+    quantidade.value = valor;
+
+  });
+
+});

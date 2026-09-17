@@ -17,9 +17,6 @@
     rel="stylesheet"
   >
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <link
     href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap"
     rel="stylesheet"
@@ -28,106 +25,107 @@
   <link rel="stylesheet" href="css/theme.css">
 
   <style>
-    .produto-page{
-      padding-top:2rem;
-      padding-bottom:3rem;
+    .produto-page {
+      padding-top: 2rem;
+      padding-bottom: 3rem;
     }
 
-    .produto-card{
-      background:#fff;
-      border-radius:24px;
-      padding:2rem;
-      box-shadow:0 8px 28px rgba(0,0,0,.08);
+    .produto-card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: 0 8px 28px rgba(0,0,0,.08);
     }
 
-    .produto-imagem{
-      width:100%;
-      height:420px;
-      object-fit:contain;
-      background:#f6e8db;
-      border-radius:20px;
-      padding:1.5rem;
+    .produto-imagem {
+      width: 100%;
+      height: 420px;
+      object-fit: contain;
+      background: #f6e8db;
+      border-radius: 20px;
+      padding: 1.5rem;
     }
 
-    .produto-titulo{
-      color:var(--brown);
-      font-weight:900;
-      text-transform:uppercase;
-      margin-bottom:.5rem;
+    .produto-titulo {
+      color: var(--brown);
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: .5rem;
     }
 
-    .produto-preco{
-      font-size:2rem;
-      font-weight:900;
-      color:#1b1b1b;
-      margin:1rem 0;
+    .produto-preco {
+      font-size: 2rem;
+      font-weight: 900;
+      color: #1b1b1b;
+      margin: 1rem 0;
     }
 
-    .produto-info{
-      color:#666;
-      margin-bottom:1.5rem;
+    .produto-info {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
     }
 
-    .quantidade-box{
-      display:flex;
-      align-items:center;
-      gap:.5rem;
-      margin-bottom:1.5rem;
+    .quantidade-box {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      margin-bottom: 1.5rem;
     }
 
-    .quantidade-box button{
-      width:42px;
-      height:42px;
-      border-radius:10px;
+    .quantidade-box button {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
     }
 
-    .quantidade-box input{
-      width:60px;
-      height:42px;
-      text-align:center;
-      border:1px solid #ddd;
-      border-radius:10px;
-      font-weight:700;
+    .quantidade-box input {
+      width: 60px;
+      height: 42px;
+      text-align: center;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-weight: 700;
     }
 
-    .produto-acoes{
-      display:flex;
-      gap:.75rem;
-      flex-wrap:wrap;
+    .produto-acoes {
+      display: flex;
+      gap: .75rem;
+      flex-wrap: wrap;
     }
 
-    .produto-acoes .btn{
-      min-height:48px;
-      padding:.7rem 1.3rem;
-      border-radius:12px;
-      font-weight:800;
+    .produto-acoes .btn {
+      min-height: 48px;
+      padding: .7rem 1.3rem;
+      border-radius: 12px;
+      font-weight: 800;
     }
 
-    .produto-voltar{
-      display:inline-flex;
-      align-items:center;
-      gap:.4rem;
-      color:var(--brown);
-      text-decoration:none;
-      font-weight:700;
-      margin-bottom:1rem;
+    .produto-voltar {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      color: var(--brown);
+      text-decoration: none;
+      font-weight: 700;
+      margin-bottom: 1rem;
     }
 
-    .produto-voltar:hover{
-      color:var(--swift-red);
+    .produto-voltar:hover {
+      color: var(--swift-red);
     }
 
-    @media (max-width:768px){
-      .produto-card{
-        padding:1rem;
+    @media (max-width: 768px) {
+      .produto-card {
+        padding: 1rem;
       }
 
-      .produto-imagem{
-        height:300px;
+      .produto-imagem {
+        height: 300px;
       }
 
-      .produto-preco{
-        font-size:1.6rem;
+      .produto-preco {
+        font-size: 1.6rem;
       }
     }
   </style>
@@ -143,16 +141,14 @@
 
       <!-- LOGO -->
       <div class="col-12 col-lg-3 d-flex align-items-center">
-
         <a href="index.html">
           <img
             src="images/logo_swift.png"
             class="img-fluid"
-            style="max-height:42px;"
+            style="max-height:80px"
             alt="Swift"
           >
         </a>
-
       </div>
 
       <!-- BUSCA -->
@@ -170,7 +166,6 @@
             type="search"
             placeholder="O que você quer cozinhar hoje?"
             aria-label="Buscar produtos"
-            autocomplete="off"
           >
 
           <button
@@ -185,7 +180,7 @@
 
       </div>
 
-      <!-- CARRINHO / CONTA -->
+      <!-- USUÁRIO / CARRINHO -->
       <div id="userActions" class="col-12 col-lg-3">
 
         <div class="d-flex flex-wrap justify-content-lg-end align-items-center gap-2">
@@ -253,7 +248,7 @@
 
     </div>
 
-    <!-- MENU -->
+    <!-- NAVEGAÇÃO -->
     <nav class="nav-chips d-flex align-items-center gap-2 mt-3">
 
       <a
@@ -312,7 +307,10 @@
 
       </div>
 
-      <a class="nav-chip" href="index.html#ofertas">
+      <a
+        class="nav-chip"
+        href="index.html#ofertas"
+      >
         Promoções
       </a>
 
@@ -355,9 +353,9 @@
 
         <img
           id="produtoImagem"
-          src="images/moida_patinho.png"
           class="produto-imagem"
-          alt="Carne moída de patinho 1KG"
+          src=""
+          alt=""
         >
 
       </div>
@@ -366,39 +364,30 @@
       <!-- INFORMAÇÕES -->
       <div class="col-12 col-lg-6">
 
-        <div class="small text-muted mb-2">
-          BOVINOS
-        </div>
+        <div
+          id="produtoCategoria"
+          class="small text-muted mb-2"
+        ></div>
 
         <h1
           id="produtoNome"
           class="produto-titulo"
-        >
-          CARNE MOÍDA DE PATINHO 1KG
-        </h1>
+        ></h1>
 
         <div
           id="produtoDescricao"
           class="produto-info"
-        >
-          Carne moída de patinho, selecionada e ultracongelada.
-          Ideal para preparar hambúrgueres, molhos, recheios e
-          diversas receitas do dia a dia.
-        </div>
+        ></div>
 
         <div
           id="produtoEmbalagem"
           class="text-muted"
-        >
-          EMBALAGEM DE 1KG
-        </div>
+        ></div>
 
         <div
           id="produtoPreco"
           class="produto-preco"
-        >
-          R$ 49,90
-        </div>
+        ></div>
 
 
         <!-- QUANTIDADE -->
@@ -478,7 +467,6 @@
     <div class="row g-4">
 
       <div class="col-12 col-md-3">
-
         <div class="foot-card">
 
           <div class="foot-pill">
@@ -487,7 +475,6 @@
           </div>
 
           <div class="foot-text">
-
             <div>COMPRE PELO TELEVENDAS</div>
             <div class="foot-strong">(11) 4020-8588</div>
 
@@ -498,16 +485,13 @@
             <div class="foot-strong">
               (11) 4020-8588
             </div>
-
           </div>
 
         </div>
-
       </div>
 
 
       <div class="col-12 col-md-3">
-
         <div class="foot-card">
 
           <div class="foot-pill">
@@ -516,7 +500,6 @@
           </div>
 
           <div class="foot-text">
-
             <div>RESOLVA PELO CHAT</div>
 
             <div class="mt-2">
@@ -526,16 +509,13 @@
             <div class="foot-strong">
               0800 400 2892
             </div>
-
           </div>
 
         </div>
-
       </div>
 
 
       <div class="col-12 col-md-3">
-
         <div class="foot-card">
 
           <div class="foot-pill">
@@ -552,12 +532,10 @@
           </ul>
 
         </div>
-
       </div>
 
 
       <div class="col-12 col-md-3">
-
         <div class="foot-card">
 
           <div class="foot-pill">
@@ -573,7 +551,6 @@
           </ul>
 
         </div>
-
       </div>
 
     </div>
@@ -586,75 +563,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script src="js/app.js"></script>
-
-
-<script>
-
-  const btnMenos = document.getElementById('btnMenos');
-  const btnMais = document.getElementById('btnMais');
-  const quantidade = document.getElementById('produtoQuantidade');
-  const btnAdicionar = document.getElementById('btnAdicionar');
-
-  btnMenos.addEventListener('click', () => {
-
-    const valor = Number(quantidade.value);
-
-    if (valor > 1) {
-      quantidade.value = valor - 1;
-    }
-
-  });
-
-
-  btnMais.addEventListener('click', () => {
-
-    const valor = Number(quantidade.value);
-
-    if (valor < 99) {
-      quantidade.value = valor + 1;
-    }
-
-  });
-
-
-  btnAdicionar.addEventListener('click', () => {
-
-    const nome = document.getElementById('produtoNome').textContent.trim();
-
-    const precoTexto =
-      document.getElementById('produtoPreco').textContent
-        .replace('R$', '')
-        .replace(/\./g, '')
-        .replace(',', '.')
-        .trim();
-
-    const preco = Number(precoTexto);
-
-    const qtd = Number(quantidade.value);
-
-    for (let i = 0; i < qtd; i++) {
-      window.addToCart(nome, preco);
-    }
-
-    btnAdicionar.innerHTML =
-      '<i class="bi bi-check2 me-1"></i> Adicionado ao carrinho';
-
-    btnAdicionar.classList.remove('btn-primary');
-    btnAdicionar.classList.add('btn-success');
-
-    setTimeout(() => {
-
-      btnAdicionar.innerHTML =
-        '<i class="bi bi-cart-plus me-1"></i> Adicionar ao carrinho';
-
-      btnAdicionar.classList.remove('btn-success');
-      btnAdicionar.classList.add('btn-primary');
-
-    }, 1200);
-
-  });
-
-</script>
 
 </body>
 </html>
